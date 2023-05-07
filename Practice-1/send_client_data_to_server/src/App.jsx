@@ -10,23 +10,23 @@ const App = () => {
       .then(datas => setUsersInfo(datas))
   }, [])
 
-  function formHandler(event){
+  function formHandler(event) {
     event.preventDefault()
-    const Name = event.target.name.value ;
-    const Email = event.target.email.value ;
-    const user = {Name,Email}
-    console.log(user)
-    fetch('http://localhost:2000/users',{
-      method:'POST',
-      headers:{
-        'content-type':'application/json'
+    const Name = event.target.name.value;
+    const Email = event.target.email.value;
+    const user = { Name, Email }
+    fetch('http://localhost:2000/users', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
       },
-      body:JSON.stringify(user)
+      body: JSON.stringify(user)
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
+
     event.target.reset()
   }
 
@@ -34,7 +34,7 @@ const App = () => {
     <div>
       <h2>Send Client Data To Server</h2>
       <form onSubmit={formHandler}>
-        <input type="text" placeholder='name' name='name' required/> <br /> <br />
+        <input type="text" placeholder='name' name='name' required /> <br /> <br />
         <input type="text" placeholder='email' name='email' required /> <br /> <br />
         <input type="submit" value='Submit' />
       </form>
