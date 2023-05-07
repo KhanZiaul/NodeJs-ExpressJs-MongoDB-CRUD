@@ -12,9 +12,9 @@ const App = () => {
 
   function formHandler(event) {
     event.preventDefault()
-    const Name = event.target.name.value;
-    const Email = event.target.email.value;
-    const user = { Name, Email }
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const user = { name, email }
     fetch('http://localhost:2000/users', {
       method: 'POST',
       headers: {
@@ -24,6 +24,8 @@ const App = () => {
     })
       .then(res => res.json())
       .then(data => {
+        const newUser = [...usersInfo,data]
+        setUsersInfo(newUser)
         console.log(data)
       })
 
