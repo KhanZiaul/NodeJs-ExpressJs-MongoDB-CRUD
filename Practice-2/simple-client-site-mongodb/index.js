@@ -22,18 +22,24 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
+
         await client.connect();
 
-        app.post('/users',(req,res) => {
-            const user = req.body
-            console.log(user)
-        })
+        // const database = client.db("usersDB");
+        // const userCollection = database.collection("users");
 
+        const userCollection = client.db('userDB').collections('users')
+
+        app.post('/users', async(req, res) => {
+            const user = req.body
+            const result = await userCollection.insertOne(user);
+            res.send(result) 
+        })
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         // Ensures that the client will close when you finish/error
-        await client.close();
+        // await client.close();
     }
 }
 run().catch(console.dir);
@@ -44,6 +50,6 @@ app.get('/', (req, res) => {
     res.send('hello world')
 })
 
-app.listen(port, function () {
+app.listen(port, () => {
     console.log(`CORS-enabled web server listening on port - ${port}`)
 })
