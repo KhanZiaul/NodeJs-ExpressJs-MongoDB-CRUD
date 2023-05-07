@@ -23,8 +23,8 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         await client.connect();
-        
-        app.post('/user',(req,res) => {
+
+        app.post('/users',(req,res) => {
             const user = req.body
             console.log(user)
         })
