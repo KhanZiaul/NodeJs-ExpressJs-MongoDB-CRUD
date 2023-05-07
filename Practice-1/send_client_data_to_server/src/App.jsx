@@ -2,20 +2,32 @@ import React, { useEffect, useState } from 'react';
 import './App.css'
 
 const App = () => {
-  const [users, setUsers] = useState([])
+  const [usersInfo, setUsersInfo] = useState([])
 
   useEffect(() => {
     fetch('http://localhost:2000/users')
       .then(res => res.json())
-      .then(datas => setUsers(datas))
+      .then(datas => setUsersInfo(datas))
   }, [])
 
   function formHandler(event){
     event.preventDefault()
     const Name = event.target.name.value ;
     const Email = event.target.email.value ;
-
-    console.log(Name,Email)
+    const user = {Name,Email}
+    console.log(user)
+    fetch('http://localhost:2000/users',{
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
+    event.target.reset()
   }
 
   return (
@@ -28,7 +40,7 @@ const App = () => {
       </form>
       <div>
         {
-          users?.map((user) => {
+          usersInfo?.map((user) => {
             return (
               <div key={user.id}>
                 <p>{user.id} . {user.name} - {user.email}</p>

@@ -32,6 +32,10 @@ app.get('/users', (req, res) => {
     res.send(users)
 })
 
+app.get('/users', (req, res) => {
+   console.log(req.body)
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
