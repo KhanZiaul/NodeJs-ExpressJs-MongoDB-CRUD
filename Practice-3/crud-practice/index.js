@@ -10,6 +10,8 @@ app.use(express.json())
 
 
 
+// const uri = "mongodb://0.0.0.0:27017";
+
 const uri = "mongodb+srv://khanzia16phy102:77GaYuM0Zhq04jBU@cluster0.mf37tl1.mongodb.net/?retryWrites=true&w=majority";
 
 
