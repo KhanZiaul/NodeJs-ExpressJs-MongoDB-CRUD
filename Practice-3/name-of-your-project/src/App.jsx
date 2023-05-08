@@ -1,16 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  function formHandler(event){
+    event.preventDefault()
+    const name = event.target.name.value ;
+    const email = event.target.email.value ;
+    const user = {name , email}
+
+    console.log(user)
+
+    event.target.reset()
+  }
   return (
     <>
       <h1>Practice CRUD</h1>
 
-      <form >
+      <form onSubmit={formHandler}>
         <input type="text" name='name' placeholder='name' required />
         <br /> <br />
         <input type="email" name='email' placeholder='email' required />
