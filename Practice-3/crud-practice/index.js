@@ -29,7 +29,9 @@ async function run() {
         const userCollection = client.db("usersDB").collection("users");;
 
         app.post('/users',async(req,res)=>{
-            const result = await userCollection.insertOne(doc);
+            const user = req.body
+            const result = await userCollection.insertOne(user);
+            res.send(result)
         })
 
         await client.db("admin").command({ ping: 1 });
