@@ -9,6 +9,14 @@ function App() {
   return (
     <>
       <h1>Practice CRUD</h1>
+
+      <form >
+        <input type="text" name='name' placeholder='name' required />
+        <br /> <br />
+        <input type="email" name='email' placeholder='email' required />
+        <br /> <br />
+        <input type="submit" value='add new user' required />
+      </form>
     </>
   )
 }
