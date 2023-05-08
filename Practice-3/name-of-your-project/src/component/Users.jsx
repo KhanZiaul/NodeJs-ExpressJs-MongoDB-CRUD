@@ -3,6 +3,11 @@ import { useLoaderData } from 'react-router-dom';
 
 const Users = () => {
     const users = useLoaderData()
+
+    function deleteHandler(id){
+        console.log(id)
+    }
+    
     return (
         <div>
             <h2>Users</h2>
@@ -11,7 +16,7 @@ const Users = () => {
                 users?.map(user => {
                     return (
                         <div key={user._id}>
-                            <p>{user.name} - {user.email} <button>X</button></p>
+                            <p>{user.name} - {user.email} <button onClick={() => deleteHandler(user._id)}>X</button></p>
                         </div>
                     )
                 })
