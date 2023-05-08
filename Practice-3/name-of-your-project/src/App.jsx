@@ -23,6 +23,7 @@ function App() {
 
     event.target.reset()
   }
+  
   return (
     <>
       <h1>Practice CRUD</h1>
