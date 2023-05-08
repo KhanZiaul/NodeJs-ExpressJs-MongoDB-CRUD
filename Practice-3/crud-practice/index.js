@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion} = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const express = require('express');
 const app = express()
 const cors = require('cors');
@@ -25,6 +25,12 @@ async function run() {
     try {
 
         await client.connect();
+
+        const userCollection = client.db("usersDB").collection("users");;
+
+        app.post('/users',async(req,res)=>{
+            const result = await userCollection.insertOne(doc);
+        })
 
         await client.db("admin").command({ ping: 1 });
 
