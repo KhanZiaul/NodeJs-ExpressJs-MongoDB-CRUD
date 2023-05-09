@@ -1,28 +1,30 @@
+import { Link } from "react-router-dom";
+
 const AddCoffe = () => {
 
     function formHandler(event) {
         event.preventDefault()
-        const name = event.target.name.value ;
-        const chef = event.target.chef.value ;
-        const supplier = event.target.supplier.value ;
-        const taste = event.target.taste.value ;
-        const price = event.target.price.value ;
-        const details= event.target.details.value ;
-        const photo= event.target.photo.value ;
+        const name = event.target.name.value;
+        const chef = event.target.chef.value;
+        const supplier = event.target.supplier.value;
+        const taste = event.target.taste.value;
+        const price = event.target.price.value;
+        const details = event.target.details.value;
+        const photo = event.target.photo.value;
 
-        const addCoffe = {name,chef,supplier,taste,price,details,photo}
+        const addCoffe = { name, chef, supplier, taste, price, details, photo }
 
-        fetch('http://localhost:2000/coffes',{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+        fetch('http://localhost:2000/coffes', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(addCoffe)
+            body: JSON.stringify(addCoffe)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
 
         event.target.reset()
     }
@@ -32,6 +34,10 @@ const AddCoffe = () => {
 
             <h2 className='text-5xl text-center my-8'>Add Coffe</h2>
 
+            <Link to='/'>
+                <button className="btn btn-primary bg-black block mx-auto my-6">COFFES</button>
+            </Link>
+            
             <form onSubmit={formHandler}>
 
                 <div className="md:flex gap-5">
