@@ -1,6 +1,10 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const UpdateCoffe = () => {
+
+    const updateCoffe = useLoaderData()
+    const { name, chef, supplier, taste, price, details, photo } = updateCoffe;
 
     function formHandler(event) {
         event.preventDefault()
@@ -8,9 +12,6 @@ const UpdateCoffe = () => {
 
     return (
 
-        // <form >
-        //     <input type="text" className='border-2'/>
-        // </form>
 
         <div className='bg-slate-200 p-8'>
 
@@ -21,13 +22,13 @@ const UpdateCoffe = () => {
                 <div className="md:flex gap-5">
                     <div className="mb-7 w-1/2">
                         <label>
-                            <input type="text" placeholder="Enter coffee name" name="coffe" className="input input-bordered w-full" />
+                            <input type="text" placeholder="Enter coffee name" name="coffe" defaultValue={name} className="input input-bordered w-full" />
                         </label>
                     </div>
 
                     <div className="mb-7 w-1/2">
                         <label >
-                            <input type="text" placeholder="Enter coffee chef" name="chef" className="input input-bordered w-full" />
+                            <input type="text" placeholder="Enter coffee chef" name="chef" defaultValue={chef} className="input input-bordered w-full" />
                         </label>
                     </div>
                 </div>
@@ -36,13 +37,13 @@ const UpdateCoffe = () => {
 
                     <div className=" mb-7 w-1/2">
                         <label>
-                            <input type="text" placeholder="Enter coffee supplier" name="supplier" className="input input-bordered w-full" />
+                            <input defaultValue={supplier} type="text" placeholder="Enter coffee supplier" name="supplier" className="input input-bordered w-full" />
                         </label>
                     </div>
 
                     <div className="mb-7 w-1/2">
                         <label >
-                            <input type="text" placeholder="Enter coffee taste" name="taste" className="input input-bordered w-full" />
+                            <input type="text" placeholder="Enter coffee taste" name="taste" defaultValue={taste} className="input input-bordered w-full" />
                         </label>
                     </div>
 
@@ -51,20 +52,20 @@ const UpdateCoffe = () => {
                 <div className="md:flex gap-5">
                     <div className="mb-7 w-1/2">
                         <label >
-                            <input type="text" placeholder="Enter coffee category" name="category" className="input input-bordered w-full" />
+                            <input type="text" placeholder="Enter coffee price" defaultValue={price} name="price" className="input input-bordered w-full" />
                         </label>
                     </div>
 
                     <div className="mb-7 w-1/2">
                         <label >
-                            <input type="text" placeholder="Enter coffee details" name="details" className="input input-bordered w-full" />
+                            <input type="text" placeholder="Enter coffee details" name="details" defaultValue={details} className="input input-bordered w-full" />
                         </label>
                     </div>
                 </div>
 
                 <div className="mb-7">
                     <label >
-                        <input type="text" placeholder="Enter photo URL" name="photo" className="input input-bordered w-full" />
+                        <input type="text" placeholder="Enter photo URL" defaultValue={photo} name="photo" className="input input-bordered w-full" />
                     </label>
                 </div>
 
