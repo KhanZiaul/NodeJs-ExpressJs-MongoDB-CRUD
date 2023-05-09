@@ -4,10 +4,12 @@ import { useLoaderData } from 'react-router-dom';
 const UpdateCoffe = () => {
 
     const updateCoffe = useLoaderData()
-    const { name, chef, supplier, taste, price, details, photo } = updateCoffe;
+
+    const { _id , name, chef, supplier, taste, price, details, photo } = updateCoffe;
 
     function formHandler(event) {
         event.preventDefault()
+
         const name = event.target.name.value;
         const chef = event.target.chef.value;
         const supplier = event.target.supplier.value;
@@ -17,8 +19,8 @@ const UpdateCoffe = () => {
         const photo = event.target.photo.value;
 
         const coffeUpdated = { name, chef, supplier, taste, price, details, photo }
-
-        fetch('http://localhost:2000/coffes', {
+        
+        fetch(`http://localhost:2000/coffes/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -45,7 +47,7 @@ const UpdateCoffe = () => {
                 <div className="md:flex gap-5">
                     <div className="mb-7 w-1/2">
                         <label>
-                            <input type="text" placeholder="Enter coffee name" name="coffe" defaultValue={name} className="input input-bordered w-full" />
+                            <input type="text" placeholder="Enter coffee name" name="name" defaultValue={name} className="input input-bordered w-full" />
                         </label>
                     </div>
 
