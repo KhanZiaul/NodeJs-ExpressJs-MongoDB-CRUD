@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Coffes = ({ coffe }) => {
-    const { name, chef, supplier, taste, price, details, photo } = coffe
+
+    const { _id , name, chef, price, photo } = coffe
+
     return (
         <div className='flex items-center justify-between shadow-2xl p-5'>
             <div>
@@ -13,7 +16,9 @@ const Coffes = ({ coffe }) => {
                 <p className='mb-3'><span className='font-bold'>Price</span> : {price}</p>
             </div>
             <div className="btn-group btn-group-vertical gap-3">
-                <button className="btn ">Details</button>
+                <Link to={`/detailsCoffe/${_id}`}>
+                    <button className="btn ">Details</button>
+                </Link>
                 <button className="btn">Edit</button>
                 <button className="btn">Delete</button>
             </div>

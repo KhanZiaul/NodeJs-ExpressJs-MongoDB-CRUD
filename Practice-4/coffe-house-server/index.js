@@ -35,8 +35,8 @@ async function run() {
     })
 
     app.get('/coffes/:id',async(req,res) => {
-      const id = req.params.id
-      const query = {_id : new ObjectId(id)};
+      const id = req.params.id ;
+      const query = { _id: new ObjectId(id) } ;
       const result = await coffeCollections.findOne(query);
       res.send(result)
     })
