@@ -2,15 +2,15 @@ const AddCoffe = () => {
 
     function formHandler(event) {
         event.preventDefault()
-        const coffe = event.target.coffe.value ;
+        const name = event.target.name.value ;
         const chef = event.target.chef.value ;
         const supplier = event.target.supplier.value ;
         const taste = event.target.taste.value ;
-        const category = event.target.category.value ;
+        const price = event.target.price.value ;
         const details= event.target.details.value ;
         const photo= event.target.photo.value ;
 
-        const addCoffe = {coffe,chef,supplier,taste,category,details,photo}
+        const addCoffe = {name,chef,supplier,taste,price,details,photo}
 
         fetch('http://localhost:2000/coffes',{
             method:'POST',
@@ -23,6 +23,8 @@ const AddCoffe = () => {
         .then(data => {
             console.log(data)
         })
+
+        event.target.reset()
     }
 
     return (
@@ -35,7 +37,7 @@ const AddCoffe = () => {
                 <div className="md:flex gap-5">
                     <div className="mb-7 w-1/2">
                         <label>
-                            <input type="text" placeholder="Enter coffee name" name="coffe" className="input input-bordered w-full" />
+                            <input type="text" placeholder="Enter coffee name" name="name" className="input input-bordered w-full" />
                         </label>
                     </div>
 
@@ -65,7 +67,7 @@ const AddCoffe = () => {
                 <div className="md:flex gap-5">
                     <div className="mb-7 w-1/2">
                         <label >
-                            <input type="text" placeholder="Enter coffee category" name="category" className="input input-bordered w-full" />
+                            <input type="text" placeholder="Enter coffee price" name="price" className="input input-bordered w-full" />
                         </label>
                     </div>
 
