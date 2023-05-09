@@ -1,11 +1,11 @@
-import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const UpdateCoffe = () => {
 
     const updateCoffe = useLoaderData()
 
-    const { _id , name, chef, supplier, taste, price, details, photo } = updateCoffe;
+    const { _id, name, chef, supplier, taste, price, details, photo } = updateCoffe;
 
     function formHandler(event) {
         event.preventDefault()
@@ -19,20 +19,39 @@ const UpdateCoffe = () => {
         const photo = event.target.photo.value;
 
         const coffeUpdated = { name, chef, supplier, taste, price, details, photo }
-        
-        fetch(`http://localhost:2000/coffes/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(coffeUpdated)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-            })
 
-        event.target.reset()
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:2000/coffes/${_id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(coffeUpdated)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.modifiedCount > 0) {
+                            Swal.fire(
+                                'Updated!',
+                                'Your file has been Updated.',
+                                'success'
+                            )
+                            event.target.reset()
+                        }
+                    })
+            }
+        })
     }
 
     return (
