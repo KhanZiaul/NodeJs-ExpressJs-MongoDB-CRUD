@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
-const Coffes = ({ coffe }) => {
+const Coffes = ({ coffe , setCoffes , coffes}) => {
 
     const { _id, name, chef, price, photo } = coffe
 
@@ -30,6 +30,8 @@ const Coffes = ({ coffe }) => {
                                 'Your file has been deleted.',
                                 'success'
                             )
+                          const filterCoffes = coffes?.filter(coffe => coffe._id !== id) ;
+                          setCoffes(filterCoffes)
                         }
                     })
             }
