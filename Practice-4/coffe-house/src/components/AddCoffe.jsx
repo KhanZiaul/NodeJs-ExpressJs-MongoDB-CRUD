@@ -11,7 +11,6 @@ const AddCoffe = () => {
         const photo= event.target.photo.value ;
 
         const addCoffe = {coffe,chef,supplier,taste,category,details,photo}
-        console.log(addCoffe)
 
         fetch('http://localhost:2000/coffes',{
             method:'POST',
@@ -19,6 +18,10 @@ const AddCoffe = () => {
                 'content-type':'application/json'
             },
             body:JSON.stringify(addCoffe)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
         })
     }
 

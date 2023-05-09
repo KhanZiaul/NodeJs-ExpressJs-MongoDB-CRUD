@@ -28,7 +28,7 @@ async function run() {
 
         await client.connect();
 
-        const userCollection = client.db("usersDB").collection("users");;
+        const userCollection = client.db("usersDB").collection("users");
 
         app.get('/users', async (req, res) => {
             const cursor = userCollection.find()
