@@ -5,9 +5,9 @@ const App = () => {
   const coffes = useLoaderData()
 
   return (
-    <div>
+    <div className="my-7">
       <h2 className='text-5xl text-center my-6'>Coffes</h2>
-      <div>
+      <div className="grid grid-cols-2 gap-5">
         {
           coffes?.map(coffe => <Coffes key={coffe._id} coffe={coffe} ></Coffes>)
         }
