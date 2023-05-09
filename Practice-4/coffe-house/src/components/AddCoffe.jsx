@@ -12,6 +12,14 @@ const AddCoffe = () => {
 
         const addCoffe = {coffe,chef,supplier,taste,category,details,photo}
         console.log(addCoffe)
+
+        fetch('http://localhost:2000/coffes',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(addCoffe)
+        })
     }
 
     return (
