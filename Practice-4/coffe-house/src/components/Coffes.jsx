@@ -5,8 +5,15 @@ const Coffes = ({ coffe }) => {
 
     const { _id, name, chef, price, photo } = coffe
 
-    function deleteHandler(id){
+    function deleteHandler(id) {
         console.log(id)
+        fetch(`http://localhost:2000/coffes/${_id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
 
     return (

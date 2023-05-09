@@ -3,7 +3,6 @@ import Coffes from "./components/Coffes";
 
 const App = () => {
   const coffes = useLoaderData()
-
   return (
     <div className="my-7">
       <h2 className='text-5xl text-center my-6'>Coffes</h2>
