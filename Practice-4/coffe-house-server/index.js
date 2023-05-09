@@ -54,19 +54,25 @@ async function run() {
       const options = { upsert: true };
       const updateCoffe = {
         $set: {
-          name : coffe.name,
-          chef : coffe.chef, 
-          supplier : coffe.supplier,
-          taste : coffe.taste,
-          price : coffe.price,
-          details : coffe.details,
-          photo : coffe.photo
+          name: coffe.name,
+          chef: coffe.chef,
+          supplier: coffe.supplier,
+          taste: coffe.taste,
+          price: coffe.price,
+          details: coffe.details,
+          photo: coffe.photo
         },
       };
       const result = await coffeCollections.updateOne(filter, updateCoffe, options);
       res.send(result)
     })
 
+    app.delete('/coffes/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await coffeCollections.deleteOne(query)
+      res.send(result)
+    })
 
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");

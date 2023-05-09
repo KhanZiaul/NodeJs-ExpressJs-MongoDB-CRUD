@@ -5,6 +5,10 @@ const Coffes = ({ coffe }) => {
 
     const { _id, name, chef, price, photo } = coffe
 
+    function deleteHandler(id){
+        console.log(id)
+    }
+
     return (
         <div className='flex items-center justify-between shadow-2xl p-5'>
             <div>
@@ -22,7 +26,7 @@ const Coffes = ({ coffe }) => {
                 <Link to={`/updateCoffe/${_id}`}>
                     <button className="btn">Edit</button>
                 </Link>
-                <button className="btn">Delete</button>
+                <button onClick={() => deleteHandler(_id)} className="btn">Delete</button>
             </div>
         </div>
     );
