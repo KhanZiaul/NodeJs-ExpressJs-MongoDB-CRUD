@@ -1,20 +1,23 @@
-import React from 'react';
-
-const UpdateCoffe = () => {
+const AddCoffe = () => {
 
     function formHandler(event) {
         event.preventDefault()
+        const coffe = event.target.coffe.value ;
+        const chef = event.target.chef.value ;
+        const supplier = event.target.supplier.value ;
+        const taste = event.target.taste.value ;
+        const category = event.target.category.value ;
+        const details= event.target.details.value ;
+        const photo= event.target.photo.value ;
+
+        const addCoffe = {coffe,chef,supplier,taste,category,details,photo}
+        console.log(addCoffe)
     }
 
     return (
-
-        // <form >
-        //     <input type="text" className='border-2'/>
-        // </form>
-
         <div className='bg-slate-200 p-8'>
 
-            <h2 className='text-5xl text-center my-8'>Update Coffe</h2>
+            <h2 className='text-5xl text-center my-8'>Add Coffe</h2>
 
             <form onSubmit={formHandler}>
 
@@ -68,10 +71,10 @@ const UpdateCoffe = () => {
                     </label>
                 </div>
 
-                <input className="w-full btn my-5" type="Submit" value="UPDATE COFFE" />
+                <input className="w-full btn my-5" type="Submit" value="ADD COFFE" />
             </form>
         </div>
     );
 };
 
-export default UpdateCoffe;
+export default AddCoffe;
