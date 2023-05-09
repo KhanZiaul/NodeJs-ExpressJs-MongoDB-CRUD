@@ -28,23 +28,36 @@ async function run() {
 
     const coffeCollections = client.db("coffesDB").collection("coffes");
 
-    app.get('/coffes',async(req,res) => {
+    app.get('/coffes', async (req, res) => {
       const cursor = coffeCollections.find()
       const result = await cursor.toArray();
       res.send(result)
     })
 
-    app.get('/coffes/:id',async(req,res) => {
-      const id = req.params.id ;
-      const query = { _id: new ObjectId(id) } ;
+    app.get('/coffes/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
       const result = await coffeCollections.findOne(query);
       res.send(result)
     })
 
-    app.post('/coffes', async(req, res) => {
+    app.post('/coffes', async (req, res) => {
       const coffe = req.body
       const result = await coffeCollections.insertOne(coffe);
       res.send(result)
+    })
+
+    app.put('/coffes/:id', async (req, res) => {
+      const id = req.params.id;
+      const coffe = req.body
+      const filter = { _id: new ObjectId(id) };
+      const options = { upsert: true };
+      const updateCoffe = {
+        $set: {
+          
+        },
+      };
+      const result = await coffeCollections.updateOne(filter, updateCoffe, options);
     })
 
 

@@ -8,6 +8,29 @@ const UpdateCoffe = () => {
 
     function formHandler(event) {
         event.preventDefault()
+        const name = event.target.name.value;
+        const chef = event.target.chef.value;
+        const supplier = event.target.supplier.value;
+        const taste = event.target.taste.value;
+        const price = event.target.price.value;
+        const details = event.target.details.value;
+        const photo = event.target.photo.value;
+
+        const coffeUpdated = { name, chef, supplier, taste, price, details, photo }
+
+        fetch('http://localhost:2000/coffes', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(coffeUpdated)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+
+        event.target.reset()
     }
 
     return (
