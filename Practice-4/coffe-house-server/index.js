@@ -54,10 +54,17 @@ async function run() {
       const options = { upsert: true };
       const updateCoffe = {
         $set: {
-          
+          name : coffe.name,
+          chef : coffe.chef, 
+          supplier : coffe.supplier,
+          taste : coffe.taste,
+          price : coffe.price,
+          details : coffe.details,
+          photo : coffe.photo
         },
       };
       const result = await coffeCollections.updateOne(filter, updateCoffe, options);
+      res.send(result)
     })
 
 
